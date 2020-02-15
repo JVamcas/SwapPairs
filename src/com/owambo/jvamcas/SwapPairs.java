@@ -19,14 +19,16 @@ class SwapPairs <K>{
     }
     public ListNode swapPairs(ListNode head) {
 
-        if(head == null) return head;//if list empty
+        if(head == null || head.next == null) return head;//if list empty
         ListNode root = head.next;
         ListNode oldHead = null;
 
         while(head != null){
 
-            if(head.next == null)//cater for odd-sized linked list
+            if(head.next == null) {//cater for odd-sized linked list
+                oldHead.next = head;
                 break;
+            }
 
             ListNode current = head.next;//2nd node from head node
             ListNode temp = current.next;//rest of the list
